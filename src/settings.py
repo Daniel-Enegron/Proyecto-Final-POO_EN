@@ -63,7 +63,7 @@ MANCHESTER = "src/assets/images/Manchester.png"
 BARCELONA = "src/assets/images/Barcelona.png"
 MADRID = "src/assets/images/Madrid.png"
 MALASYA = "src/assets/images/Malasya.png"
-NUÑEZ = "src/assets/images/Nuñez.png"
+NUÑEZ = "src/assets/images/Nuñez3.png"
 MEXICO = "src/assets/images/Mexico.png"
 BOCA = "src/assets/images/Boca.png"
 IMAGEN_FONDO = "src/assets/images/scene.jpg"
@@ -95,6 +95,9 @@ MESSI_COPA = "src/assets/images/messi_copa.png"
 D10S = "src/assets/images/d10s.png"
 DIBU = "src/assets/images/dibu.png"
 DORSAL = "src/assets/images/dorsal.png"
+EQUIPO_US= "src/assets/images/equipo_us.png"
+EQUIPO_CPU= "src/assets/images/equipo_cpu.png"
+JUG_CONPELOTA= "src/assets/images/jug_conpelota.png"
 # Fuentes
 FUENTE = "src/assets/font/Pixeltype.ttf"
 EMOJIS = "src/assets/font/NotoEmoji-Regular.ttf"
@@ -119,6 +122,20 @@ PASE = "src/assets/images/gifs/pase.gif"
 PASE2 = "src/assets/images/gifs/pase2.gif"
 TIRO = "src/assets/images/gifs/tiro.gif"
 TIRO_LEJANO = "src/assets/images/gifs/tiro_lejano.gif"
+
+ATAJADA_GIF = gif_pygame.load(ATAJADA)
+ATAJADA2_GIF = gif_pygame.load(ATAJADA2)
+GAMBETA_GIF = gif_pygame.load(GAMBETA)
+GAMBETA2_GIF = gif_pygame.load(GAMBETA2)
+GAMBETA3_GIF = gif_pygame.load(GAMBETA3)
+GAMBETA4_GIF = gif_pygame.load(GAMBETA4)
+INTERCEPCION_PASE_GIF = gif_pygame.load(INTERCEPCION_PASE)
+INTERCEPCION_PASE2_GIF = gif_pygame.load(INTERCEPCION_PASE2)
+INTERCEPCION_PASE3_GIF = gif_pygame.load(INTERCEPCION_PASE3)
+PASE_GIF = gif_pygame.load(PASE)
+PASE2_GIF = gif_pygame.load(PASE2)
+TIRO_GIF = gif_pygame.load(TIRO)
+TIRO_LEJANO_GIF = gif_pygame.load(TIRO_LEJANO)
 pygame.font.init()
 
 # Sonidos

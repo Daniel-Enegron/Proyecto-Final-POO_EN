@@ -1,6 +1,5 @@
 import sys
 import pygame
-import gif_pygame
 from settings import *
 from view.CanchaView import CanchaView
 from model.logic.Partido import Partido
@@ -20,8 +19,7 @@ class CanchaController(Controlador):
         self._indice_seleccionado = 0
         self.boton_actual = None
         self.boton_mouse = None
-        self.boton_texto = None  # esto se saca
-
+        self._view.set_jugcon_pelota(self._partido._jugador_con_pelota())
     def manejar_eventos(self, eventos, mouse_pos):
         from controller.JugarViewControlador import JugarController
 
@@ -54,26 +52,21 @@ class CanchaController(Controlador):
 
     def cambiar_boton_actual(self):
         botones = self._view.get_botones()
-        for indice, (boton_texto, boton) in enumerate(botones.items()):
+        for boton in botones.values():
             if boton.hovering:
+                # print('entra al hovering')
+                # self.boton_mouse = boton
+                # anterior.deseleccionar()
                 self.boton_actual = boton
-                self._indice_seleccionado = indice
-                self.boton_texto = boton_texto
+                # self.boton_actual.seleccionar()
             elif boton.seleccionado:
                 self.boton_actual = boton
-                self._indice_seleccionado = indice
-                self.boton_texto = boton_texto
-
-        # print(self.boton_texto) #ESTO SE SACA ES PARA VER SI SE CAMBIABA LOS BOTONES
+                # self.boton_actual.seleccionar()
+                # self.boton_mouse = None
 
     def main_loop(self):
-        # self._view.renderizar()
-        ATAJADA_GIF = gif_pygame.load(ATAJADA, loops=-1)
         while True:
             if self._view.get_visibilidad():
-                ATAJADA_GIF.render(
-                    self._view._pantalla, (int(ANCHO * 0.25), int(ALTO * 0.05))
-                )
                 mouse_pos = pygame.mouse.get_pos()
                 self._view.mostrar()  # Mostrar el menú
                 eventos = pygame.event.get()  # Manejar eventos
@@ -106,15 +99,11 @@ class CanchaController(Controlador):
             menu_jugar.main_loop()
         elif nombre_boton_seleccionado == "pase":
             print("hizo pasee")
-            self._partido.realizar_pase()
         elif nombre_boton_seleccionado == "tiro":
-            self._partido.realizar_tiro()
             print("hizo tiro")
         elif nombre_boton_seleccionado == "gambeta":
-            self._partido.realizar_gambeta()
             print("hizo gambeta")
         elif nombre_boton_seleccionado == "interceptar":
-            self._partido.realizar_intercepcion()
             print("hizo interceptar")
 
     def set_estadio(self, estadio):
