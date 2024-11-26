@@ -95,4 +95,15 @@ class CanchaView(VentanaView):
             self.__estadio_cancha = mexico
         elif self.__estadio == malasia:
             self.__estadio_cancha = malasya
-    #def 
+    def mostrar(self):
+        jug_us= pygame.image.load(EQUIPO_US)
+        jug_chica=pygame.transform.scale(jug_us,(10,10))
+        jug_cpu= pygame.image.load(EQUIPO_CPU)
+        jug_cpu_chica=pygame.transform.scale(jug_cpu,(10,10))
+        #jug_cpu= pygame.image.load(EQUIPO_CPU)
+        #for jugador in jug_usu:
+        #    self._pantalla.blit(jug_chica,(jugador))
+        #for jugador_cpu in jug_cpu_:
+        #    self._pantalla.blit(jug_cpu_chica,(jugador_cpu))
+        for formacion in FORMACION_USUARIO:
+            self._pantalla.blit(jug_chica,(formacion))

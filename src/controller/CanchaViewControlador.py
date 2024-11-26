@@ -19,7 +19,7 @@ class CanchaController(Controlador):
         self._indice_seleccionado = 0
         self.boton_actual = None
         self.boton_mouse = None
-        self._view.set_jugcon_pelota(self._partido._jugador_con_pelota())
+        #self._view.set_jugcon_pelota(self._partido._jugador_con_pelota())
     def manejar_eventos(self, eventos, mouse_pos):
         from controller.JugarViewControlador import JugarController
 
