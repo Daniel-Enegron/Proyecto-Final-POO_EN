@@ -1,6 +1,6 @@
 import gif_pygame
 import pygame
-from random import *
+
 from settings import *
 
 from .VentanaView import VentanaView
@@ -14,6 +14,8 @@ class CanchaView(VentanaView):
         self.__estadio_cancha = barcelona
 
     def mostrar(self):
+        mouse_pos1= pygame.mouse.get_pos()
+        print(mouse_pos1)
         self._botones = {}
         pygame.display.set_caption("GAMEPLAY")
         self._pantalla.fill(NEGRO)
@@ -21,7 +23,6 @@ class CanchaView(VentanaView):
         # self._pantalla.blit(marcador, (int(ANCHO * 0.2), int(ALTO * 0.55)))
         estadio = self.__estadio_cancha
         self._pantalla.blit(estadio, (int(ANCHO * 0.01), int(ALTO * 0.01)))
-        self.mostrar_jugadores()
         TIEMPO = get_fuente(50).render("TIEMPO", True, BLANCO)
         self._pantalla.blit(TIEMPO, (int(ANCHO * 0.84), int(ALTO * 0.05)))
         ATAJADA_GIF.render(self._pantalla, (int(ANCHO * 0.25), int(ALTO * 0.05)))
@@ -94,39 +95,15 @@ class CanchaView(VentanaView):
             self.__estadio_cancha = mexico
         elif self.__estadio == malasia:
             self.__estadio_cancha = malasya
-    def mostrar_jugadores(self):
+    def mostrar(self):
         jug_us= pygame.image.load(EQUIPO_US)
         jug_chica=pygame.transform.scale(jug_us,(10,10))
         jug_cpu= pygame.image.load(EQUIPO_CPU)
         jug_cpu_chica=pygame.transform.scale(jug_cpu,(10,10))
-        lista=[("4-3-3"),("4-4-2")]
-        lis = choice(lista) #esto lo hice por el simple echo si cambiaba la formacion, pero hay que sacarlo por que se ejecuta las dos formaciones rapidamente xd
-        #HAY QUE ARREGLAR DE DONDE IRA ESTA IMPRESION, POR QUE NO SE COMO IMPLEMENTARLO EN EL MINIMAPA
-        for posicion in POSICIONES:
-            coordenadas= FORMACION_USUARIO[lis][posicion]
-            for coordenada in coordenadas:
-                x= coordenada[0]
-                y= coordenada[1]
-                self._pantalla.blit(jug_chica,(x,y))
-                self.cambiar_color_jugador(x,y)
-            coordenadas = FORMACION_CPU[lis][posicion]
-            for coordenada in coordenadas:
-                x = coordenada[0]
-                y = coordenada[1]
-                self._pantalla.blit(jug_cpu_chica, (x, y))
-                self.cambiar_color_jugador(x,y)
-    def cambiar_color_jugador(self,x,y):
-        # Implementación de la función aquí
-        con_pelota= pygame.image.load(JUG_CONPELOTA)
-        jug_conpelota=pygame.transform.scale(con_pelota,(10,10))
-        for posicion in POSICIONES:
-            coordenadas = FORMACION_USUARIO["4-3-3"][posicion]
-            for coordenada in coordenadas:
-                if coordenada == (x, y):
-                    # Cambiar el color del jugador
-                    if posicion == "jugador_del_usuario":
-                        # Cambiar de rojo a negro
-                        self._pantalla.blit(jug_conpelota, (x, y))
-                    elif posicion == "jugador_del_cpu":
-                        # Cambiar de azul a negro
-                        self._pantalla.blit(jug_conpelota, (x, y))
+        #jug_cpu= pygame.image.load(EQUIPO_CPU)
+        #for jugador in jug_usu:
+        #    self._pantalla.blit(jug_chica,(jugador))
+        #for jugador_cpu in jug_cpu_:
+        #    self._pantalla.blit(jug_cpu_chica,(jugador_cpu))
+        for formacion in FORMACION_USUARIO:
+            self._pantalla.blit(jug_chica,(formacion))
