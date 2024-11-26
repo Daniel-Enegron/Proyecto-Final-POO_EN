@@ -26,12 +26,6 @@ class Cancha:
     
     def get_diccionario(self):
         return self._diccionario_completo
-    
-    def get_equipo_usuario(self):
-        return self._equipo1
-    
-    def get_equipo_cpu(self):
-        return self._equipo2
 
     def mapear_cancha(self):
         # equipo 1 (jugador 1)
@@ -61,11 +55,11 @@ class Cancha:
                 if (
                     self._cancha[i][j] == self._equipo1.get_nro_equipo()
                 ):  # NRO_EQUIPO TIENE 1 O 2
-                    self._diccionario_equipo1[(i, j)] = equipo1[jugador_index]
+                    # self._diccionario_equipo1[(i, j)] = equipo1[jugador_index]
                     self._diccionario_completo[(i, j)] = equipo1[jugador_index]
                     jugador_index += 1
                 if self._cancha[i][j] == self._equipo2.get_nro_equipo():
-                    self._diccionario_equipo2[(i, j)] = equipo2[jugador_index2]
+                    # self._diccionario_equipo2[(i, j)] = equipo2[jugador_index2]
                     self._diccionario_completo[(i, j)] = equipo2[jugador_index2]
                     jugador_index2 += 1
                     
