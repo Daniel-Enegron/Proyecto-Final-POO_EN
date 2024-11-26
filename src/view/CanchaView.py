@@ -100,10 +100,15 @@ class CanchaView(VentanaView):
         jug_chica=pygame.transform.scale(jug_us,(10,10))
         jug_cpu= pygame.image.load(EQUIPO_CPU)
         jug_cpu_chica=pygame.transform.scale(jug_cpu,(10,10))
-        #jug_cpu= pygame.image.load(EQUIPO_CPU)
-        #for jugador in jug_usu:
-        #    self._pantalla.blit(jug_chica,(jugador))
-        #for jugador_cpu in jug_cpu_:
-        #    self._pantalla.blit(jug_cpu_chica,(jugador_cpu))
-        for formacion in FORMACION_USUARIO:
-            self._pantalla.blit(jug_chica,(formacion))
+        #HAY QUE ARREGLAR DE DONDE IRA ESTA IMPRESION, POR QUE NO SE COMO IMPLEMENTARLO EN EL MINIMAPA
+        for posicion in POSICIONES:
+            coordenadas= FORMACION_USUARIO["4-3-3"][posicion]
+            for coordenada in coordenadas:
+                x= coordenada[0]
+                y= coordenada[1]
+                self._pantalla.blit(jug_chica,(x,y))
+            coordenadas = FORMACION_CPU["4-3-3"][posicion]
+            for coordenada in coordenadas:
+                x = coordenada[0]
+                y = coordenada[1]
+                self._pantalla.blit(jug_cpu_chica, (x, y))
