@@ -156,7 +156,6 @@ class Cancha:
             # Ordenar para que los enemigos más cercanos estén primero
             puntos_cercanos.sort(key=lambda x: x[1])
             return puntos_cercanos [0]
-  
     "FUNCION MODIFICADA "
     "NOTA --> Se ingresa una posicion y un TIPO de busqueda"
     "Se retorna una lista de tuplas con los puntos cercanos y la distancia"
