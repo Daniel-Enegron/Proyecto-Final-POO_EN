@@ -68,6 +68,7 @@ class CanchaController(Controlador):
         while True:
             if self._view.get_visibilidad():
                 mouse_pos = pygame.mouse.get_pos()
+                self._view.cambiar_color_jugador(133, 92)
                 self._view.mostrar()  # Mostrar el menú
                 eventos = pygame.event.get()  # Manejar eventos
                 self.manejar_eventos(eventos, mouse_pos)
