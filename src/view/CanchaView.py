@@ -14,8 +14,6 @@ class CanchaView(VentanaView):
         self.__estadio_cancha = barcelona
 
     def mostrar(self):
-        mouse_pos1= pygame.mouse.get_pos()
-        print(mouse_pos1)
         self._botones = {}
         pygame.display.set_caption("GAMEPLAY")
         self._pantalla.fill(NEGRO)
@@ -23,6 +21,7 @@ class CanchaView(VentanaView):
         # self._pantalla.blit(marcador, (int(ANCHO * 0.2), int(ALTO * 0.55)))
         estadio = self.__estadio_cancha
         self._pantalla.blit(estadio, (int(ANCHO * 0.01), int(ALTO * 0.01)))
+        self.mostrar_jugadores()
         TIEMPO = get_fuente(50).render("TIEMPO", True, BLANCO)
         self._pantalla.blit(TIEMPO, (int(ANCHO * 0.84), int(ALTO * 0.05)))
         ATAJADA_GIF.render(self._pantalla, (int(ANCHO * 0.25), int(ALTO * 0.05)))
@@ -95,7 +94,7 @@ class CanchaView(VentanaView):
             self.__estadio_cancha = mexico
         elif self.__estadio == malasia:
             self.__estadio_cancha = malasya
-    def mostrar(self):
+    def mostrar_jugadores(self):
         jug_us= pygame.image.load(EQUIPO_US)
         jug_chica=pygame.transform.scale(jug_us,(10,10))
         jug_cpu= pygame.image.load(EQUIPO_CPU)
@@ -105,5 +104,14 @@ class CanchaView(VentanaView):
         #    self._pantalla.blit(jug_chica,(jugador))
         #for jugador_cpu in jug_cpu_:
         #    self._pantalla.blit(jug_cpu_chica,(jugador_cpu))
-        for formacion in FORMACION_USUARIO:
-            self._pantalla.blit(jug_chica,(formacion))
+        for posicion in POSICIONES:
+            coordenadas= FORMACION_USUARIO["4-3-3"][posicion]
+            for coordenada in coordenadas:
+                x= coordenada[0]
+                y= coordenada[1]
+                self._pantalla.blit(jug_chica,(x,y))
+            coordenadas = FORMACION_CPU["4-3-3"][posicion]
+            for coordenada in coordenadas:
+                x = coordenada[0]
+                y = coordenada[1]
+                self._pantalla.blit(jug_cpu_chica, (x, y))
